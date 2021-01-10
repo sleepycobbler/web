@@ -6,7 +6,7 @@ const links = [
   ]
 
 
-function addLinks(document) {
+function addLinks() {
     var newListLinks = '';
 
     for (var link in links) {
