@@ -9,7 +9,7 @@ const links = [
 function addLinks() {
     var newListLinks = '';
     console.log("I am here!")
-    for (var link in links) {
+    for (var link of links) {
         newListLinks += '<li><a href=\'' + link.url + '\'>' + link.label + '</li>'
     }
 
