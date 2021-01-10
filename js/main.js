@@ -10,7 +10,7 @@ function addLinks() {
     var newListLinks = '';
     console.log("I am here!")
     for (var link of links) {
-        newListLinks += '<li><a href=\'' + link.url + '\'>' + link.label + '</li>'
+        newListLinks += '<li class=\'item\'><a href=\'' + link.url + '\'>' + link.label + '</li>'
     }
 
     document.getElementById("listLinks").innerHTML = newListLinks;
