@@ -1,7 +1,16 @@
 body {
-    background-color: #FFFFFF;
+    background-color:  #398F36;
     height: 100%;
     margin: 0;
+}
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    color: black;
+    width: 100%;
 }
 
 .container {
@@ -11,15 +20,11 @@ body {
     flex-flow: row;
     flex-direction: row;
     background-color: #398F36;
-  }
+}
 
 .header-container {
     display: flex;
     justify-content: center;
-}
-  
-.item {
-    background-color: #398F36;
 }
 
 .header-item {
@@ -32,6 +37,7 @@ h1 {
     font-style: italic;
     text-decoration: underline;
     text-align: center;
+    padding: 10px;
 }
 
 ol {
@@ -41,29 +47,39 @@ ol {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: row;
 }
 
 li {
-    margin: 10px;
-    padding: 10px;
-
+    padding: 10px !important;
+    width: 160px;
+    text-align: center;
 }
 
 a {
-    background-color: #FFFFFF !important;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     font-weight: bold;
+    width: 160px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #FFFFFF;
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
-    flex-grow: 1;
 }
 
-a:visited {
-    color: black;
+p:hover {
+    background-color: #dddddd;
 }
 
-a:link {
-    color: black;
+p:active {
+    box-shadow: 0 0 10px inset #000000;
+    background-color: #dddddd;
 }
+
+
