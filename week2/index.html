@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function sing(song,callback) {
+        console.log(`I'm singing along to ${song}.`);
+        callback();
+        }
+
+        function dance() {
+            console.log("I'm moving my body to the groove.");
+        }
+
+        sing('Let It Go',dance);
+    </script>
 </head>
 <body>
     <div>
         <h1>Notes for Week 2</h1>
+    </div>
+    <div>
+        <h2>Javascript and Functions</h2>
+        <p>Functions can be declared in multiple ways</p>
+        <p>Callbacks are also a way to pass functions as arguments, or to specify how the function 'functions'</p>
     </div>
 </body>
 </html>
