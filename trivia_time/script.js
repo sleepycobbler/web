@@ -152,7 +152,7 @@ async function startConnect() {
         });
         newPage += '</ul>';
         if (userType == 'host') {
-        newPage += <button id='gameContinue' onclick="sendQuestion()">Next Question</button>
+          newPage += '<button id=\'gameContinue\' onclick=\"sendQuestion()\">Next Question</button>';
         }
         document.getElementById('root').innerHTML = newPage;
     }
