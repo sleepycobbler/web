@@ -68,6 +68,7 @@ async function setQuestion(newQuestion) {
 }
 
 async function startConnect() {
+  document.getElementById('joinGame').style.visibility='hidden';
   var tempName = document.getElementById('username').value.toString();
   if (!tempName.match(/^[0-9a-zA-Z]+$/) && tempName.length.toInt() < 26) {
     alert("Please input a valid username using only letters and numbers, and less than 26 characters.");
@@ -107,6 +108,7 @@ async function startConnect() {
       case 'HOST':
         console.log("I am a host");
         userType = 'host';
+        document.getElementById('startGame').style.visibility='visible';
         connection.send(JSON.stringify({
           code: 'ACK'
         }));
