@@ -55,15 +55,12 @@ async function setUsers(num) {
 
 async function setQuestion(newQuestion) {
   var newPage = '<h1>' + newQuestion.question + '</h1><ul>';
-  var choices = [newQuestion.correct_answer].concat(newQuestion.incorrect_answers);
-  for (let i = choices.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [choices[i], choices[j]] = [choices[j], choices[i]];
-    for (choice in choices) {
-      newPage += '<li>' + choice + '</li>';
-    }
-    newPage += '</ul>';
-    document.getElementById('root').innerHTML = newPage;
+  newQuestion['choices'].forEach(choice => {
+    newPage += '<li>' + choice + '</li>';
+  });
+  
+  newPage += '</ul>';
+  document.getElementById('root').innerHTML = newPage;
   }
 }
 
