@@ -59,6 +59,7 @@ async function sendChoice(element) {
     choice: element.innerHTML,
     username: currentUsername
   }))
+  document.getElementById('root').innerHTML = '<h1>Please Wait...</h1>';
 }
 
 async function setQuestion(newQuestion) {
