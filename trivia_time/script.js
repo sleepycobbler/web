@@ -56,7 +56,7 @@ async function setUsers(num) {
 async function setQuestion(newQuestion) {
   var newPage = '<h1>' + newQuestion.question + '</h1><ul>';
   newQuestion['choices'].forEach(choice => {
-    newPage += '<li>' + choice + '</li>';
+    newPage += '<li id=\'choice\' onclick=\'sendChoice(this)\'>' + choice + '</li>';
   });
   
   newPage += '</ul>';
