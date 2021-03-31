@@ -85,6 +85,7 @@ async function startConnect() {
     alert("Please input a valid username using only letters and numbers, and less than 26 characters.");
     return;
   }
+  currentUsername = tempName;
   var serverUrl;
   var scheme = "ws";
 
