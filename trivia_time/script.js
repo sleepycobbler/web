@@ -49,6 +49,10 @@ async function go() {
   }));
 }
 
+async function setUsers(num) {
+  document.getElementById('numPlayers').innerHTML = 'Number of Players: ' + num;
+}
+
 async function setQuestion(newQuestion) {
   var newPage = '<h1>' + newQuestion.question + '</h1><ul>';
   var choices = [newQuestion.correct_answer].concat(newQuestion.incorrect_answers);
@@ -125,6 +129,7 @@ async function startConnect() {
         break;
       case 'STATE':
         numUsers = data.numUsers;
+        setUsers(numUsers);
         currentQuestion = data.currentQuestion;
         if (currentQuestion.question !== "None") {
           setQuestion(currentQuestion);
