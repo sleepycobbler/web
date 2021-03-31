@@ -71,6 +71,13 @@ async function setQuestion(newQuestion) {
   document.getElementById('root').innerHTML = newPage;
 }
 
+async function sendQuestion() {
+  const response = await getJSON('https://opentdb.com/api.php?amount=1&token=' + session_token);
+  question = response.results[0];
+  question['code'] = 'Q';
+  connection.send(JSON.stringify(response.results[0]));
+}
+
 async function startConnect() {
   document.getElementById('joinGame').style.visibility='hidden';
   var tempName = document.getElementById('username').value.toString();
@@ -126,10 +133,7 @@ async function startConnect() {
         break;
       case 'RDY':
         if (userType == 'host') {
-          const response = await getJSON('https://opentdb.com/api.php?amount=1&token=' + session_token);
-          question = response.results[0];
-          question['code'] = 'Q';
-          connection.send(JSON.stringify(response.results[0]));
+          sendQuestion();
         }
         gameInProgress = true;
         break;
@@ -141,6 +145,16 @@ async function startConnect() {
           setQuestion(currentQuestion);
         }
         break;
+      case 'A':
+        var newPage = '<h1>The correct Answer was: ' + data.correctAnswer + '</h1><h2>Current Scores:</h2><ul>';
+        data['scores'].forEach(player => {
+          newPage += '<li>' + player.username + ': ' + player.score + '</li>';
+        });
+        newPage += '</ul>';
+        if (userType == 'host') {
+        newPage += <button id='gameContinue' onclick="sendQuestion()">Next Question</button>
+        }
+        document.getElementById('root').innerHTML = newPage;
     }
   };
 
