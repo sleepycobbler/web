@@ -53,6 +53,14 @@ async function setUsers(num) {
   document.getElementById('numPlayers').innerHTML = 'Number of Players: ' + num;
 }
 
+async function sendChoice(element) {
+  connection.send(JSON.stringify({
+    code: 'RSP',
+    choice: element.innerHTML,
+    username: currentUsername
+  }))
+}
+
 async function setQuestion(newQuestion) {
   var newPage = '<h1>' + newQuestion.question + '</h1><ul>';
   newQuestion['choices'].forEach(choice => {
