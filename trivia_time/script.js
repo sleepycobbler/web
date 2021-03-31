@@ -61,7 +61,6 @@ async function setQuestion(newQuestion) {
   
   newPage += '</ul>';
   document.getElementById('root').innerHTML = newPage;
-  }
 }
 
 async function startConnect() {
