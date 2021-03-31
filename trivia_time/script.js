@@ -79,7 +79,7 @@ async function startConnect() {
     scheme += "s";
   }
 
-  serverUrl = scheme + "://192.225.186.243:3000/";
+  serverUrl = scheme + "://192.225.186.243:3000";
 
   connection = new WebSocket(serverUrl);
 
