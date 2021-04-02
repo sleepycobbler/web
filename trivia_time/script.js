@@ -88,7 +88,7 @@ async function displayHostOptions() {
   fetch('https://opentdb.com/api_category.php')
     .then((response) => response.json())
     .then((categoryList) => {
-      console.log(categoryList);
+      console.log(categoryList.trivia_categories);
       categories = categoryList.trivia_categories
     })
   
@@ -96,8 +96,11 @@ async function displayHostOptions() {
     fetch('https://opentdb.com/api_count.php?category=' + category.id.toString())
     .then((response) => response.json())
     .then((categoryNums) => {
+      console.log(categoryNums);
       catQNum.push(categoryNums);
     })
+    console.log('step2');
+    console.log(category);
     document.getElementById('checklist').innerHTML += '<input type=\"checkbox\" id=\"' + category.id + '\" name=\"' + category.name + '\" value=\"' + category.id + '\">' + 
                          '<label for=\"' + category.id + '\">' + category.name + '</label><br>' +
                          '<input type=\"checkbox\" id=\"easy ' + category.id + '\" name=\"easy\" value=\"easy\">' +
