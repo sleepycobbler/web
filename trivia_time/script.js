@@ -98,7 +98,7 @@ async function displayHostOptions() {
           .then((response) => response.json())
           .then((categoryNums) => {
             console.log(categoryNums);
-            catQNum.push(categoryNums);
+            catQNum.push(categoryNums.category_question_count);
           })
           .then(finalStep => {
             console.log('step2');
