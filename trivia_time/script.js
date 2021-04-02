@@ -8,6 +8,9 @@ var currentQuestion;
 var gameInProgress = false;
 var questionActive = false;
 
+var categories = [];
+var difficulties = [];
+
 QUESTION = {
   code: 'Q',
   category: "None",
@@ -79,6 +82,15 @@ async function sendQuestion() {
   connection.send(JSON.stringify(response.results[0]));
 }
 
+async function displayHostOptions() {
+  listDiv = document.getElementById('checklist');
+  fetch('https://opentdb.com/api_category.php')
+    .then((response) => response.json())
+    .then((category) => {
+      console.log(category);
+    })
+}
+
 async function startConnect() {
   document.getElementById('joinGame').style.visibility='hidden';
   var tempName = document.getElementById('username').value.toString();
@@ -125,6 +137,10 @@ async function startConnect() {
         connection.send(JSON.stringify({
           code: 'ACK'
         }));
+        displayHostOptions();
+        // https://opentdb.com/api_category.php Get Category List
+        // https://opentdb.com/api_count.php?category=CATEGORY_ID_HERE Get number of questions per category
+        // 
         break;
       case 'PLAYER':
         console.log("I am a player");
@@ -163,3 +179,5 @@ async function startConnect() {
   console.log("***CREATED ONMESSAGE");
 
 }
+
+document.addEventListener('')
