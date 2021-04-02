@@ -9,7 +9,8 @@ var gameInProgress = false;
 var questionActive = false;
 
 var categories = [];
-var difficulties = [];
+var catQNum = [];
+var difficulties = ['easy', 'medium', 'hard'];
 
 QUESTION = {
   code: 'Q',
@@ -84,11 +85,29 @@ async function sendQuestion() {
 
 async function displayHostOptions() {
   listDiv = document.getElementById('checklist');
+  listDiv.innerHTML = '';
   fetch('https://opentdb.com/api_category.php')
     .then((response) => response.json())
-    .then((category) => {
-      console.log(category);
+    .then((categoryList) => {
+      console.log(categoryList);
+      categories = categoryList.trivia_categories
     })
+  
+  categories.forEach(category => {
+    fetch('https://opentdb.com/api_count.php?category=' + category.id.toString())
+    .then((response) => response.json())
+    .then((categoryNums) => {
+      catQNum.push(categoryNums);
+    })
+    listDiv.innerHTML += '<input type=\"checkbox\" id=\"' + category.id + '\" name=\"' + category.name + '\" value=\"' + category.id + '\">' + 
+                         '<label for=\"' + category.id + '\">' + category.name + '</label><br>' +
+                         '<input type=\"checkbox\" id=\"easy ' + category.id + '\" name=\"easy\" value=\"easy\">' +
+                         '<label for=\"' + category.id + ' easy\">Easy Questions (' + catQNum[catQNum.length - 1].total_easy_question_count + ' count)</label><br>' +
+                         '<input type=\"checkbox\" id=\"medium ' + category.id + '\" name=\"medium\" value=\"medium\">' +
+                         '<label for=\"' + category.id + ' medium\">Medium Questions (' + catQNum[catQNum.length - 1].total_medium_question_count + ' count)</label><br>' +
+                         '<input type=\"checkbox\" id=\"hard ' + category.id + '\" name=\"hard\" value=\"hard\">' +
+                         '<label for=\"' + category.id + ' hard\">Hard Questions (' + catQNum[catQNum.length - 1].total_hard_question_count + ' count)</label><br>';
+  })
 }
 
 async function startConnect() {
