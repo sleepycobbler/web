@@ -200,5 +200,3 @@ async function startConnect() {
   console.log("***CREATED ONMESSAGE");
 
 }
-
-document.addEventListener('')
