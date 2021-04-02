@@ -71,7 +71,7 @@ async function setQuestion(newQuestion) {
   newQuestion['choices'].forEach(choice => {
     newPage += '<li id=\'choice\' onclick=\'sendChoice(this)\'>' + choice + '</li>';
   });
-  
+
   newPage += '</ul>';
   document.getElementById('root').innerHTML = newPage;
 }
@@ -85,35 +85,39 @@ async function sendQuestion() {
 
 async function displayHostOptions() {
   document.getElementById('checklist').innerHTML = '';
+
   fetch('https://opentdb.com/api_category.php')
     .then((response) => response.json())
     .then((categoryList) => {
       console.log(categoryList.trivia_categories);
       categories = categoryList.trivia_categories
     })
-  
-  categories.forEach(category => {
-    fetch('https://opentdb.com/api_count.php?category=' + category.id.toString())
-    .then((response) => response.json())
-    .then((categoryNums) => {
-      console.log(categoryNums);
-      catQNum.push(categoryNums);
+    .then(nextStep => {
+      categories.forEach(category => {
+        fetch('https://opentdb.com/api_count.php?category=' + category.id.toString())
+          .then((response) => response.json())
+          .then((categoryNums) => {
+            console.log(categoryNums);
+            catQNum.push(categoryNums);
+          })
+          .then(finalStep => {
+            console.log('step2');
+            console.log(category);
+            document.getElementById('checklist').innerHTML += '<input type=\"checkbox\" id=\"' + category.id + '\" name=\"' + category.name + '\" value=\"' + category.id + '\">' +
+              '<label for=\"' + category.id + '\">' + category.name + '</label><br>' +
+              '<input type=\"checkbox\" id=\"easy ' + category.id + '\" name=\"easy\" value=\"easy\">' +
+              '<label for=\"' + category.id + ' easy\">Easy Questions (' + catQNum[catQNum.length - 1].total_easy_question_count + ' count)</label><br>' +
+              '<input type=\"checkbox\" id=\"medium ' + category.id + '\" name=\"medium\" value=\"medium\">' +
+              '<label for=\"' + category.id + ' medium\">Medium Questions (' + catQNum[catQNum.length - 1].total_medium_question_count + ' count)</label><br>' +
+              '<input type=\"checkbox\" id=\"hard ' + category.id + '\" name=\"hard\" value=\"hard\">' +
+              '<label for=\"' + category.id + ' hard\">Hard Questions (' + catQNum[catQNum.length - 1].total_hard_question_count + ' count)</label><br>';
+          })
+      })
     })
-    console.log('step2');
-    console.log(category);
-    document.getElementById('checklist').innerHTML += '<input type=\"checkbox\" id=\"' + category.id + '\" name=\"' + category.name + '\" value=\"' + category.id + '\">' + 
-                         '<label for=\"' + category.id + '\">' + category.name + '</label><br>' +
-                         '<input type=\"checkbox\" id=\"easy ' + category.id + '\" name=\"easy\" value=\"easy\">' +
-                         '<label for=\"' + category.id + ' easy\">Easy Questions (' + catQNum[catQNum.length - 1].total_easy_question_count + ' count)</label><br>' +
-                         '<input type=\"checkbox\" id=\"medium ' + category.id + '\" name=\"medium\" value=\"medium\">' +
-                         '<label for=\"' + category.id + ' medium\">Medium Questions (' + catQNum[catQNum.length - 1].total_medium_question_count + ' count)</label><br>' +
-                         '<input type=\"checkbox\" id=\"hard ' + category.id + '\" name=\"hard\" value=\"hard\">' +
-                         '<label for=\"' + category.id + ' hard\">Hard Questions (' + catQNum[catQNum.length - 1].total_hard_question_count + ' count)</label><br>';
-  })
 }
 
 async function startConnect() {
-  document.getElementById('joinGame').style.visibility='hidden';
+  document.getElementById('joinGame').style.visibility = 'hidden';
   var tempName = document.getElementById('username').value.toString();
   if (!tempName.match(/^[0-9a-zA-Z]+$/) && tempName.length.toInt() < 26) {
     alert("Please input a valid username using only letters and numbers, and less than 26 characters.");
@@ -154,7 +158,7 @@ async function startConnect() {
       case 'HOST':
         console.log("I am a host");
         userType = 'host';
-        document.getElementById('startGame').style.visibility='visible';
+        document.getElementById('startGame').style.visibility = 'visible';
         connection.send(JSON.stringify({
           code: 'ACK'
         }));
