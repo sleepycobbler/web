@@ -84,8 +84,7 @@ async function sendQuestion() {
 }
 
 async function displayHostOptions() {
-  listDiv = document.getElementById('checklist');
-  listDiv.innerHTML = '';
+  document.getElementById('checklist').innerHTML = '';
   fetch('https://opentdb.com/api_category.php')
     .then((response) => response.json())
     .then((categoryList) => {
@@ -99,7 +98,7 @@ async function displayHostOptions() {
     .then((categoryNums) => {
       catQNum.push(categoryNums);
     })
-    listDiv.innerHTML += '<input type=\"checkbox\" id=\"' + category.id + '\" name=\"' + category.name + '\" value=\"' + category.id + '\">' + 
+    document.getElementById('checklist').innerHTML += '<input type=\"checkbox\" id=\"' + category.id + '\" name=\"' + category.name + '\" value=\"' + category.id + '\">' + 
                          '<label for=\"' + category.id + '\">' + category.name + '</label><br>' +
                          '<input type=\"checkbox\" id=\"easy ' + category.id + '\" name=\"easy\" value=\"easy\">' +
                          '<label for=\"' + category.id + ' easy\">Easy Questions (' + catQNum[catQNum.length - 1].total_easy_question_count + ' count)</label><br>' +
