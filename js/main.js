@@ -1,56 +1,41 @@
 const links = [
     {
-      label: "Week 1 notes",
-      url: "week1/index.html"
-    },
-    {
-        label: "Week 2 notes",
-        url: "week2/index.html"
-    },
-    {
-        label: "Week 3 notes",
+        label: "Javascript Sorting Example",
         url: "week3/index.html"
     },
     {
-        label: "Week 4 notes",
+        label: "Tic-Tac-Toe Demo",
         url: "week4/index.html"
     },
     {
-        label: "Week 5 notes",
-        url: "week5/index.html"
-    },
-    {
-        label: "Week 6 notes",
-        url: "week6/index.html"
-    },
-    {
-        label: "Week 7 notes",
-        url: "week7/index.html"
-    },
-    {
-        label: "Week 8 notes",
+        label: "D&D API Demo",
         url: "week8/index.html"
     },
     {
-        label: "Week 9 notes",
+        label: "Music Box Demo",
         url: "week9/index.html"
     },
     {
-        label: "Week 10 notes",
+        label: "Earthquake API Demo",
         url: "week10/index.html"
     },
     {
-        label: "Week 11 notes",
-        url: "week11/index.html"
+        label: "Trivia Time Client",
+        url: "localhostClient/index.html"
     },
     {
-        label: "Week 12 notes",
-        url: "week12/index.html"
+        label: "Trivia Time Python Server File",
+        url: "localhostServer/main.py"
     },
     {
-        label: "Week 13 notes",
-        url: "week13/index.html"
+        label: "Absolver Deckbuilder - yarn example",
+        url: "https://github.com/sleepycobbler/Absolver"
+    },
+    {
+        label: "Absolver React Project - JSDoc",
+        url: "https://sleepycobbler.github.io/Absolver/"
     }
+
   ]
 
 
