@@ -38,6 +38,10 @@ const links = [
     {
         label: "Absolver React Project - JSDoc",
         url: "https://sleepycobbler.github.io/Absolver/"
+    },
+    {
+        label: "Todo Prototype",
+        url: "TodoApp/index.html"
     }
 
   ]

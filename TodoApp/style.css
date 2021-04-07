@@ -1,0 +1,133 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+div>h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+textarea {
+    resize: none;
+}
+
+li>div>p, li>p {
+    border: 5px black;
+    margin: 10px;
+    width: 100%;
+}
+
+.topContainer {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.inputContainer {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    align-self: flex-end;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+.inputContainer>.todoInput {
+    padding: 10px;
+    margin: 0px;
+    flex-grow: 6;
+    border: 1px solid black;
+    text-align: start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex
+}
+
+.inputContainer .button {
+    padding: 0px;
+    margin: 0px;
+    flex-grow: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: inset;
+    border: 1px solid black;
+    border-left: 0px;
+}
+
+.inputContainer .button p {
+    font-size: 12.5vw;
+    padding: 0px;
+    margin: 0px;
+    ;
+}
+
+.listContainer {
+    padding: 0px;
+    margin: 0px;
+    border: 1px;
+    align-self: flex-start;
+    flex-grow: 11;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+
+.todoList {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delbox {
+    justify-self: right;
+    align-self: right;
+    border-left: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ol>li {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    width: 70%;
+    border: 1px solid black;
+}
+
+li>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div > input[type=checkbox]:checked ~ p {
+    text-decoration: line-through;
+  }
+
+li {
+    display: flex;
+    justify-content: space-between;
+}
+
