@@ -1,0 +1,28 @@
+#root {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+#root > div{
+    background-color: red;
+    width: 80%;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.nav {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav > p {
+    padding: 5px;
+    margin: 10px;
+    background-color: aquamarine;
+}

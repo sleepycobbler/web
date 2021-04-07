@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        var timer = setInterval(counter, 1000);
+        localStorage.count = 1;
+        function counter() {
+            if (typeof (Storage) !== "undefined") {
+                if (localStorage.count) {
+                    localStorage.count = Number(localStorage.count) + 1;
+                } else {
+                    localStorage.count = 1;
+                }
+            } else {
+                document.getElementById("result").innerHTML = "Please enable webstorage.";
+            }
+            document.getElementById("result").innerHTML = "You have been on this page for " + localStorage.count + " seconds.";
+        }
+    </script>
 </head>
+
 <body>
-    <div>
-        <h1>Notes for Week 1</h1>
-        <p>Most of this was review. Looking at local storage, its easy to see why it is used as frequently as it is.</p>
-    </div>
+
+    <p>Local Storage Demo, counting the seconds.</p>
+    <div id="result"></div>
+
 </body>
+
 </html>
