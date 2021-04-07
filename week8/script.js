@@ -1,24 +1,23 @@
 async function getJSON(url) {
-    try {
-      const response = await fetch(url).then(respons => console.log(response.json()));
-
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        const fetchJson = await response.json();
-        return fetchJson;
-      }
-    } catch (error) {
-      console.log(error);
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      const fetchJson = await response.json();
+      return fetchJson;
     }
+  } catch (error) {
+    console.log(error);
   }
+}
 
 var pageNumber = 1;
 var amountPages = 0;
 
 async function startup(url="https://www.dnd5eapi.co/api/spells/") {
     const response = await getJSON(url);
-    console.log(response.results);
+    console.log(response);
     var perPage = 10;
     amountPages = response.results.length;
     for(i = pageNumber * perPage; i > perPage * pageNumber - perPage; i--) {
