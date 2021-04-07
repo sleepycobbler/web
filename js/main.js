@@ -1,5 +1,9 @@
 const links = [
     {
+        label: "Form Validation Example",
+        url: "week2/index.html"
+    },
+    {
         label: "Javascript Sorting Example",
         url: "week3/index.html"
     },

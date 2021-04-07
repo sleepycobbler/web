@@ -4,27 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        function sing(song,callback) {
-        console.log(`I'm singing along to ${song}.`);
-        callback();
-        }
-
-        function dance() {
-            console.log("I'm moving my body to the groove.");
-        }
-
-        sing('Let It Go',dance);
-    </script>
 </head>
 <body>
     <div>
-        <h1>Notes for Week 2</h1>
+        <h1>Echo Button</h1>
+        <input type="text" id="text1">
+        <button id="button1">Echo</button>
+        <div id="result1"></div>
     </div>
     <div>
-        <h2>Javascript and Functions</h2>
-        <p>Functions can be declared in multiple ways</p>
-        <p>Callbacks are also a way to pass functions as arguments, or to specify how the function 'functions'</p>
+        <h1>Add all Button</h1>
+        <input type="text" id="text2">
+        <button id="button2">Add All</button>
+        <div id="result2"></div>
+    </div>
+    <div>
+        <h1>Add Together Button</h1>
+        <input type="text" id="text31">
+        <input type="text" id="text32">
+        <button id="button3">+</button>
+        <button id="button4">X</button>
+        <button id="button5">-</button>
+        <div id="result3"></div>
     </div>
 </body>
+<script>
+
+    const subtract = function() {
+        let val1 = document.getElementById("text31").value;
+        let val2 = document.getElementById("text32").value;
+        
+        if( isNaN(val1) || isNaN(val2)) {
+            alert("Put in actual numbers pretty please.")
+            return;
+        }
+
+        document.querySelector('#result3').innerHTML = Number(val1) - Number(val2)
+
+    }
+
+    const multiply = function() {
+        let val1 = document.getElementById("text31").value;
+        let val2 = document.getElementById("text32").value;
+        
+        if( isNaN(val1) || isNaN(val2)) {
+            alert("Put in actual numbers pretty please.")
+            return;
+        }
+
+        document.querySelector('#result3').innerHTML = Number(val1) * Number(val2)
+
+    }
+
+    const addTogether = function() {
+        let val1 = document.getElementById("text31").value;
+        let val2 = document.getElementById("text32").value;
+        
+        if( isNaN(val1) || isNaN(val2)) {
+            alert("Put in actual numbers pretty please.")
+            return;
+        }
+
+        document.querySelector('#result3').innerHTML = Number(val1) + Number(val2)
+
+    }
+
+    function addAll() {
+        let val = document.getElementById("text2").value;
+        if(val < 1 || isNaN(val)) {
+            alert("Please enter a number higher than 0");
+            return;
+        }
+
+        let addedVal = 0;
+
+        while(val > 0) {
+            addedVal += Number(val);
+            val -= 1;
+        }
+
+        document.querySelector('#result2').innerHTML = addedVal;
+
+    }
+
+    const mime = () => {
+        let myString = document.querySelector("#text1").value;
+        document.querySelector('#result1').innerHTML = myString;
+    }
+
+    document.getElementById("button1").addEventListener("click", mime);
+    document.getElementById("button2").addEventListener("click", addAll);
+    document.getElementById("button3").addEventListener("click", addTogether);
+    document.getElementById("button4").addEventListener("click", multiply);
+    document.getElementById("button5").addEventListener("click", subtract);
+</script>
 </html>
