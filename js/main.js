@@ -24,8 +24,8 @@ const links = [
         url: "localhostClient/index.html"
     },
     {
-        label: "Trivia Time Python Server File",
-        url: "localhostServer/main.py"
+        label: "Trivia Time Python Server - Github",
+        url: "https://github.com/sleepycobbler/web/tree/master/localhostServer"
     },
     {
         label: "Absolver Deckbuilder - yarn example",
